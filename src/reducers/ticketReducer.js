@@ -17,6 +17,22 @@ export default function ticketReducer(state, action) {
           (ticket) => ticket.id !== action.payload.id
         ),
       };
+
+    case "SET_EDITING_TICKET":
+      /* Edit mode -
+      Submit information about which ticket is edited*/
+      return {
+        ...state,
+        editingTicket: action.payload,
+      };
+
+    case "CLEAR_EDITING_TICKET":
+      /*Not in Edit mode -
+      Set the infomation that the ticket is no longer being edited */
+      return {
+        ...state,
+        editingTicket: null,
+      };
     default:
       return state;
   }
